@@ -53,6 +53,17 @@ class DateTime::Actions::Raku {
         make DateTime.new(|$<date>.made, |$<time>.made);
     }
 
+    method mysql-date ($/) {
+        make DateTime.new(
+          year   => $<date5><year>.made,
+          month  => $<date5><month>.made,
+          day    => $<date5><day>.made,
+          hour   => $<time><hour>.made,
+          minute => $<time><minute>.made,
+          second => $<time><second>.made
+        );
+    }
+
     method !genericDate($/) {
         make { year => $<year>.made, month => $<month>.made, day => $<day>.made };
     }
